@@ -1,0 +1,142 @@
+{
+  "summary": {
+    "n": 15,
+    "hit_rate": 0.6666666666666666,
+    "mean_route_len": 1.7333333333333334,
+    "n_indexed_categories": 3,
+    "chance_hit_rate_if_uniform_random": 0.3333333333333333
+  },
+  "rows": [
+    {
+      "question_id": "690e4e4c-5ed4-4834-8e59-af22df9b462a",
+      "true_category": "finance",
+      "route": [
+        "ai"
+      ],
+      "hit": false
+    },
+    {
+      "question_id": "174ce51e-8b7e-455c-8c50-09bb2e3b3932",
+      "true_category": "cs.CL",
+      "route": [
+        "ai",
+        "cs.CL"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "6154080b-c528-4525-aafc-c8af92640c47",
+      "true_category": "finance",
+      "route": [
+        "finance"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "29af1bc8-42b8-4ff2-b9be-bde286450ca3",
+      "true_category": "finance",
+      "route": [
+        "finance"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "2f68b558-ba64-44a7-827a-9695d05c01ed",
+      "true_category": "finance",
+      "route": [
+        "ai",
+        "cs.CL"
+      ],
+      "hit": false
+    },
+    {
+      "question_id": "c7de8326-f5ab-40db-8046-4ca827ef6ae8",
+      "true_category": "ai",
+      "route": [
+        "ai"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "d6e1cd20-b8e6-49bc-a75a-f793b3dc2723",
+      "true_category": "ai",
+      "route": [
+        "ai",
+        "cs.CL",
+        "finance"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "0437acd5-71c4-44a3-9325-5c018376d189",
+      "true_category": "ai",
+      "route": [
+        "cs.CL"
+      ],
+      "hit": false
+    },
+    {
+      "question_id": "37885fe9-a59d-4342-80ce-9f41cc69a766",
+      "true_category": "cs.CL",
+      "route": [
+        "ai"
+      ],
+      "hit": false
+    },
+    {
+      "question_id": "6aae0086-53d3-4276-af87-572206e2c600",
+      "true_category": "finance",
+      "route": [
+        "ai",
+        "cs.CL",
+        "finance"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "95e1da9c-61fd-4299-8bcf-737bb8db8d27",
+      "true_category": "ai",
+      "route": [
+        "ai",
+        "cs.CL"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "f897ef45-0fbd-48aa-bd69-b5ed7cbdd244",
+      "true_category": "ai",
+      "route": [
+        "ai",
+        "cs.CL",
+        "finance"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "b11a6175-8fa2-4f47-9e07-a036c0b9d7a2",
+      "true_category": "ai",
+      "route": [
+        "ai",
+        "cs.CL"
+      ],
+      "hit": true
+    },
+    {
+      "question_id": "cb283543-b7fc-4ad7-b4fa-bda0952251f2",
+      "true_category": "ai",
+      "route": [
+        "cs.CL"
+      ],
+      "hit": false
+    },
+    {
+      "question_id": "eff62bbb-2a26-4492-b8e5-6c38221b339a",
+      "true_category": "ai",
+      "route": [
+        "ai",
+        "cs.CL"
+      ],
+      "hit": true
+    }
+  ]
+}

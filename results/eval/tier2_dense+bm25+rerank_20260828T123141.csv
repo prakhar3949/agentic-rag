@@ -1,0 +1,4 @@
+question_id,config_name,tier,question,gold_chunk_id,hit_at_50,hit_at_5,context_precision,context_recall,faithfulness,response_relevancy,abstained,gen_input_tokens,gen_output_tokens,judge_input_tokens,judge_output_tokens,latency_s
+e06d1227-0789-45e0-b6dc-90f18469b0eb,dense+bm25+rerank,2,What does the event study plot show?,c8b5ad85-69a0-5307-914e-4bdb989d92ae,True,True,0.5,1.0,1.0,0.5,False,1174,183,2911,2911,67.49370350001846
+7d0dcba1-021d-4883-b169-7c570259de46,dense+bm25+rerank,2,What is the name of the open protocol introduced by Google for interoperable agents that can discover capabilities?,8b2c5c63-0ac2-548e-8dc0-db4a0f589c30,True,True,1.0,1.0,1.0,1.0,False,1910,35,4569,2290,63.909814800019376
+7420fb84-4a0a-4932-aef7-b69bdecf7272,dense+bm25+rerank,2,What does the diagonal of the correlation matrix in the heatmap represent?,657f657a-0e3e-583e-b0a3-424cb0a1d453,True,True,1.0,1.0,1.0,1.0,False,963,19,1858,1607,46.96609970001737

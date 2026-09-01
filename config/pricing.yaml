@@ -1,0 +1,81 @@
+# Pricing config for cost tracking across the ablation sweep.
+# Every $/query figure in the eval harness reads from this file — update
+# prices here, never inline in code, so the ablation table can be
+# recomputed without re-running eval.
+#
+# STATUS: scaffolded 2026-07-30. Prices below are PLACEHOLDERS (0.00)
+# until verified against each provider's live pricing page. Do not trust
+# these for real cost estimates until every `verified:` date is filled in.
+# Model IDs and per-MTok rates change — re-check before your final sweep.
+
+meta:
+  currency: USD
+  unit: per_1M_tokens
+  last_reviewed: "2026-08-05"
+
+models:
+  # --- Generator (Gemini) ---
+  # Model name as given by the user. NOT in this skill's cached model
+  # catalog (which only lists gemini-2.x-era names) — could not verify
+  # this ID or its pricing against a known-good source. Confirm directly
+  # against ai.google.dev/pricing (or Vertex AI pricing, if using that
+  # surface) before relying on any cost figure derived from this entry.
+  gemini-generator:
+    provider: google
+    model_id: "gemini-3.1-flash-lite"   # UNVERIFIED — confirm this ID exists as named
+    input_per_mtok: 0.00                # TODO
+    output_per_mtok: 0.00               # TODO
+    cached_input_per_mtok: 0.00         # TODO — fill in if prompt caching is used
+    source_url: "https://ai.google.dev/gemini-api/docs/pricing#batch_3"                      # TODO — paste the exact pricing page URL
+    verified: "2026-08-01"                      # TODO — set to date once confirmed, e.g. "2026-08-01"
+
+  # --- Judge (DeepSeek-V4-Flash via Fireworks) ---
+  # Originally planned as Qwen2.5-72B-Instruct (ROADMAP §1); that model was retired from
+  # Fireworks' serverless catalog by 2026-08-05. Of the two providers already configured
+  # (Fireworks, Groq), the only Qwen options left were qwen3p7-plus (Fireworks — "-plus" naming
+  # and `kind: CUSTOM_MODEL` with no Hugging Face ID strongly suggests a proprietary Alibaba
+  # DashScope proxy, not open weights) and qwen/qwen3.6-27b (Groq — confirmed open weight via
+  # `hugging_face_id`, but 27B, under the roadmap's 32B floor). deepseek-v4-flash-0731 satisfies
+  # both original criteria: confirmed open weight (`kind: HF_BASE_MODEL` in Fireworks' /v1/models,
+  # checkpoint is deepseek-ai/DeepSeek-V4-Flash on Hugging Face), 284B total / ~13B active
+  # parameters (MoE), and a different model family from the Gemini generator (no self-eval bias).
+  # The dated `-0731` release is pinned rather than the bare `deepseek-v4-flash` preview name, so
+  # the exact judge version does not drift under us.
+  eval-judge:
+    provider: fireworks
+    model_id: "accounts/fireworks/models/deepseek-v4-flash-0731"
+    input_per_mtok: 0.14
+    output_per_mtok: 0.28
+    cached_input_per_mtok: 0.028
+    temperature: 0                      # pinned for reproducibility — do not change per §Phase 4
+    source_url: "https://docs.fireworks.ai/serverless/pricing"
+    verified: "2026-08-05"
+
+# --- Embeddings (local — free, no metering needed) ---
+embeddings:
+  bge-m3:
+    provider: local
+    cost_per_mtok: 0.0
+    note: "Runs on local GPU/CPU — no per-token cost. Track compute time separately if relevant."
+
+# --- LangSmith (traces + retention) ---
+# Resolved 2026-07-30 (see ROADMAP.md Phase 8). 1 LSU = $1.00 USD.
+langsmith:
+  lsu_to_usd: 1.00
+  overage:
+    base_retention:
+      window_days: 14
+      lsu_per_trace: 0.0005
+      usd_per_1k_traces: 0.50
+    extended_retention:
+      window_days: 400
+      lsu_per_trace: 0.005
+      usd_per_1k_traces: 5.00
+    note: >
+      Extended retention likely cannot be applied retroactively — verify
+      before running the Tier 3 sweep (see ROADMAP.md Phase 0 checklist).
+  free_tier_traces_per_month: 5000
+  plan_note: >
+    5,000 free traces/month typically maps to the Developer plan; the
+    overage rate above was sourced from a Plus-tier pricing view. Confirm
+    both figures come from the same plan before budgeting against them.

@@ -1,0 +1,92 @@
+{
+  "overall": {
+    "n": 73,
+    "raw_agreement": 0.8082191780821918,
+    "cohens_kappa": 0.44030668127053685,
+    "confusion": {
+      "judge_true_human_true": 50,
+      "judge_true_human_false": 8,
+      "judge_false_human_true": 6,
+      "judge_false_human_false": 9
+    }
+  },
+  "context_precision": {
+    "n": 23,
+    "raw_agreement": 0.6956521739130435,
+    "cohens_kappa": 0.4145454545454545,
+    "confusion": {
+      "judge_true_human_true": 7,
+      "judge_true_human_false": 1,
+      "judge_false_human_true": 6,
+      "judge_false_human_false": 9
+    }
+  },
+  "context_recall": {
+    "n": 25,
+    "raw_agreement": 0.84,
+    "cohens_kappa": 0.0,
+    "confusion": {
+      "judge_true_human_true": 21,
+      "judge_true_human_false": 4,
+      "judge_false_human_true": 0,
+      "judge_false_human_false": 0
+    }
+  },
+  "faithfulness": {
+    "n": 25,
+    "raw_agreement": 0.88,
+    "cohens_kappa": 0.0,
+    "confusion": {
+      "judge_true_human_true": 22,
+      "judge_true_human_false": 3,
+      "judge_false_human_true": 0,
+      "judge_false_human_false": 0
+    }
+  },
+  "by_category": {
+    "ai": {
+      "n": 2,
+      "raw_agreement": 1.0,
+      "cohens_kappa": 1.0,
+      "confusion": {
+        "judge_true_human_true": 2,
+        "judge_true_human_false": 0,
+        "judge_false_human_true": 0,
+        "judge_false_human_false": 0
+      }
+    },
+    "cs.CL": {
+      "n": 3,
+      "raw_agreement": 1.0,
+      "cohens_kappa": 1.0,
+      "confusion": {
+        "judge_true_human_true": 2,
+        "judge_true_human_false": 0,
+        "judge_false_human_true": 0,
+        "judge_false_human_false": 1
+      }
+    },
+    "finance": {
+      "n": 9,
+      "raw_agreement": 1.0,
+      "cohens_kappa": 1.0,
+      "confusion": {
+        "judge_true_human_true": 8,
+        "judge_true_human_false": 0,
+        "judge_false_human_true": 0,
+        "judge_false_human_false": 1
+      }
+    },
+    "unknown": {
+      "n": 59,
+      "raw_agreement": 0.7627118644067796,
+      "cohens_kappa": 0.34548335974643396,
+      "confusion": {
+        "judge_true_human_true": 38,
+        "judge_true_human_false": 8,
+        "judge_false_human_true": 6,
+        "judge_false_human_false": 7
+      }
+    }
+  }
+}

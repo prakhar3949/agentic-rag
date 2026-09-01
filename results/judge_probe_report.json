@@ -1,0 +1,312 @@
+{
+  "n_cases": 26,
+  "n_scored": 26,
+  "accuracy": 0.9615384615384616,
+  "negative_recall": 1.0,
+  "positive_recall": 0.875,
+  "by_domain": {
+    "ai": {
+      "n": 10,
+      "correct": 9,
+      "accuracy": 0.9
+    },
+    "cs.CL": {
+      "n": 8,
+      "correct": 8,
+      "accuracy": 1.0
+    },
+    "finance": {
+      "n": 8,
+      "correct": 8,
+      "accuracy": 1.0
+    }
+  },
+  "cases": [
+    {
+      "id": "off_topic",
+      "metric": "context_recall",
+      "category": "off_topic",
+      "domain": "ai",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context contains only bibliographic references and does not mention crystal entropy proxy or thermodynamic stability."
+    },
+    {
+      "id": "mismatched_context",
+      "metric": "context_recall",
+      "category": "mismatched_context",
+      "domain": "ai",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context does not mention AGNN, EER, or any numerical value related to them."
+    },
+    {
+      "id": "perturbed_number",
+      "metric": "faithfulness",
+      "category": "perturbed_number",
+      "domain": "ai",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context lists AGNN EER values of 6.48, 48.02, and 8.39 for different columns, none of which is 99.99."
+    },
+    {
+      "id": "hallucinated_addition",
+      "metric": "context_recall",
+      "category": "hallucinated_entity",
+      "domain": "ai",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 4,
+      "correct": true,
+      "judge_reason": "[4 sub-claims, verdicts=[True, True, False, False]] The context states: 'the twenty most frequent task types, about 65% of the pool'.; The context lists 'shopping' among the task types spanned by the twenty most frequent types.; The context does not mention banking; it lists article reading, fact lookups, academic-paper, shopping, and library tasks.; The context does not mention travel booking; it lists article reading, fact lookups, academic-paper, shopping, and library tasks."
+    },
+    {
+      "id": "unstated_fact",
+      "metric": "context_recall",
+      "category": "unstated_fact",
+      "domain": "ai",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[False, False, False]] The retrieved context does not mention AISPA.; The retrieved context does not mention any evaluation of AISPA.; The retrieved context does not mention any specific number of system prompts or an evaluation."
+    },
+    {
+      "id": "negation_flip",
+      "metric": "faithfulness",
+      "category": "negation_flip",
+      "domain": "ai",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context states that the twenty most frequent task types span about 65% of the pool, which contradicts the claim."
+    },
+    {
+      "id": "finance_perturbed_number",
+      "metric": "faithfulness",
+      "category": "perturbed_number",
+      "domain": "finance",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 2,
+      "correct": true,
+      "judge_reason": "[2 sub-claims, verdicts=[True, False]] The retrieved context states 'Applying the system to 292,984 filings'.; The retrieved context states it yields 601,088 grounded event tags, not 750,000."
+    },
+    {
+      "id": "finance_mismatched_context",
+      "metric": "context_recall",
+      "category": "mismatched_context",
+      "domain": "finance",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[False, False, False]] The retrieved context discusses cryptocurrency bubble detection and does not mention judge-assessed precision or quality scores.; The retrieved context provides no information about quality scores or precision percentages.; The retrieved context does not contain any data about precision at any quality score."
+    },
+    {
+      "id": "cs_cl_hallucinated_addition",
+      "metric": "context_recall",
+      "category": "hallucinated_entity",
+      "domain": "cs.CL",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[True, True, False]] The context states that 'all mainstream models suffer significantly from salience bias' and that 'salience bias is pervasive'.; The context explicitly states that salience bias is 'correlated with capability'.; The context does not mention mathematical reasoning tasks; it discusses commonsense reasoning and does not restrict salience bias to mathematical tasks."
+    },
+    {
+      "id": "cs_cl_negation_flip",
+      "metric": "faithfulness",
+      "category": "negation_flip",
+      "domain": "cs.CL",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 2,
+      "correct": true,
+      "judge_reason": "[2 sub-claims, verdicts=[False, False]] The context states that 'all mainstream models suffer significantly from salience bias' and that it is 'pervasive', contradicting the claim that it is rare.; The context explicitly says 'severity scaling with distractor density' and that the bias is 'structured along distractor density', indicating a direct relationship."
+    },
+    {
+      "id": "finance_off_topic",
+      "metric": "context_recall",
+      "category": "off_topic",
+      "domain": "finance",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context discusses pump.fun token graduation rates and social-presence indicators, with no mention of stablecoin regulation, gateway regulation, or cross-exchange trading."
+    },
+    {
+      "id": "finance_hallucinated_addition",
+      "metric": "faithfulness",
+      "category": "hallucinated_entity",
+      "domain": "finance",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 2,
+      "correct": true,
+      "judge_reason": "[2 sub-claims, verdicts=[True, False]] The retrieved context explicitly states 'on a 832,941-launch sample with a 0.198% pooled graduation rate'.; The retrieved context does not mention Ethereum, Solana, or any comparison between blockchain platforms. It only discusses pump.fun token graduation, social indicators, and market-cap quartiles."
+    },
+    {
+      "id": "finance_unstated_fact",
+      "metric": "context_recall",
+      "category": "unstated_fact",
+      "domain": "finance",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 2,
+      "correct": true,
+      "judge_reason": "[2 sub-claims, verdicts=[False, False]] The retrieved context discusses experimental results and model performance but does not mention deployment of the model.; The retrieved context does not mention any banks or deployment locations."
+    },
+    {
+      "id": "finance_negation_flip",
+      "metric": "faithfulness",
+      "category": "negation_flip",
+      "domain": "finance",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[False, False, False]] The context states that TabNet was the most effective model, achieving 97.39% accuracy and a ROC-AUC of 0.9739, which is excellent, not poor.; The context reports TabNet's ROC-AUC as 0.9739, which is far above 0.5, not below.; The context explicitly says conventional DNN models were not sufficient, with DNN collapsing predictions and ROC-AUC 0.5, while TabNet outperformed them with a ROC-AUC of 0.9739."
+    },
+    {
+      "id": "cs_cl_off_topic",
+      "metric": "context_recall",
+      "category": "off_topic",
+      "domain": "cs.CL",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 2,
+      "correct": true,
+      "judge_reason": "[2 sub-claims, verdicts=[False, False]] The retrieved context does not mention IDAQ or any shift in its direction.; The retrieved context does not discuss safety-IDAQ entanglement or mental-state attribution."
+    },
+    {
+      "id": "cs_cl_mismatched_context",
+      "metric": "context_recall",
+      "category": "mismatched_context",
+      "domain": "cs.CL",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[False, False, False]] The context does not mention any dimensions or stock-movement prediction.; The context does not discuss stock-movement prediction or any dimensions.; The context does not provide any importance values or percentages."
+    },
+    {
+      "id": "cs_cl_perturbed_number",
+      "metric": "faithfulness",
+      "category": "perturbed_number",
+      "domain": "cs.CL",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 2,
+      "correct": true,
+      "judge_reason": "[2 sub-claims, verdicts=[True, False]] The retrieved context explicitly states: 'FinBERT and LLaMA disagree on sentiment polarity in 53.5% of cases'.; The retrieved context states: 'All six dimensions contribute meaningfully to prediction (importance range: 14-21%)', which contradicts the claimed 40-60% range."
+    },
+    {
+      "id": "cs_cl_unstated_fact",
+      "metric": "context_recall",
+      "category": "unstated_fact",
+      "domain": "cs.CL",
+      "expected_supported": false,
+      "actual_supported": false,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[False, False, False]] The retrieved context does not mention GPT-4 or any specific model used in consciousness-steering experiments.; The retrieved context does not mention Claude 3.5 or any specific model used in consciousness-steering experiments.; The retrieved context does not discuss model deployment or compare commercial models."
+    },
+    {
+      "id": "control_verbatim_number",
+      "metric": "context_recall",
+      "category": "control_verbatim",
+      "domain": "ai",
+      "expected_supported": true,
+      "actual_supported": true,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context table shows AGNN with an EER value of 8.39 in the last column (C_pred/C_train), directly matching the claim."
+    },
+    {
+      "id": "control_paraphrase",
+      "metric": "context_recall",
+      "category": "control_paraphrase",
+      "domain": "ai",
+      "expected_supported": true,
+      "actual_supported": false,
+      "n_claims_decomposed": 2,
+      "correct": false,
+      "judge_reason": "[2 sub-claims, verdicts=[False, True]] The retrieved context mentions 'new research and industry standards' but does not mention 'norms'.; The retrieved context states that third-party auditing 'could inspire new research and industry standards on building trustworthy and transparent AI systems.'"
+    },
+    {
+      "id": "control_verbatim_pct",
+      "metric": "faithfulness",
+      "category": "control_verbatim",
+      "domain": "ai",
+      "expected_supported": true,
+      "actual_supported": true,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context explicitly states: 'the twenty most frequent task types, about 65% of the pool'."
+    },
+    {
+      "id": "control_reference_list",
+      "metric": "context_recall",
+      "category": "control_verbatim",
+      "domain": "ai",
+      "expected_supported": true,
+      "actual_supported": true,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context includes the citation [JST20] which lists these three authors and the pages 386-392, confirming that they wrote that paper."
+    },
+    {
+      "id": "finance_control_verbatim",
+      "metric": "faithfulness",
+      "category": "control_verbatim",
+      "domain": "finance",
+      "expected_supported": true,
+      "actual_supported": true,
+      "n_claims_decomposed": 1,
+      "correct": true,
+      "judge_reason": "The retrieved context explicitly states: 'Applying the system to 292,984 filings from 2022 to 2026 yields 601,088 grounded event tags, which we release.' This directly matches the claim's numbers and action."
+    },
+    {
+      "id": "cs_cl_control_paraphrase",
+      "metric": "context_recall",
+      "category": "control_paraphrase",
+      "domain": "cs.CL",
+      "expected_supported": true,
+      "actual_supported": true,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[True, True, True]] The context states 'Evaluating 12 state-of-the-art LLMs' and 'evaluation of 12 LLMs'.; The context says 'all mainstream models suffer significantly from salience bias' and 'salience bias is pervasive', which implies nearly all or all.; The context states 'severity scaling with distractor density' and 'structured along distractor density'."
+    },
+    {
+      "id": "finance_control_paraphrase",
+      "metric": "faithfulness",
+      "category": "control_paraphrase",
+      "domain": "finance",
+      "expected_supported": true,
+      "actual_supported": true,
+      "n_claims_decomposed": 3,
+      "correct": true,
+      "judge_reason": "[3 sub-claims, verdicts=[True, True, True]] The context states that TabNet was 'The most effective model that was examined' and that 'Every other model showed deficient performance', indicating it outperformed the others.; The context reports 'A ROC-AUC value of 0.9739 - 97.39 percent accuracy in classification', which is over 97%.; The context mentions 'Minimal instances of both false positives and negatives' for TabNet."
+    },
+    {
+      "id": "cs_cl_control_verbatim",
+      "metric": "context_recall",
+      "category": "control_verbatim",
+      "domain": "cs.CL",
+      "expected_supported": true,
+      "actual_supported": true,
+      "n_claims_decomposed": 2,
+      "correct": true,
+      "judge_reason": "[2 sub-claims, verdicts=[True, True]] The retrieved context explicitly states this as the central hypothesis: 'financial news contains multiple information dimensions that are partially orthogonal to surface sentiment'.; The context states this as part of the hypothesis and provides supporting evidence: 'All six dimensions contribute meaningfully to prediction (importance range: 14-21%), with no single dominant feature, confirming that the framework captures distinct information channels.'"
+    }
+  ]
+}

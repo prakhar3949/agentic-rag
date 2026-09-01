@@ -1,0 +1,37 @@
+# Secrets. NEVER commit real API keys - .env.example documents every variable name this project
+# reads, with no real values, so the repo is still runnable by someone else without this file.
+.env
+.env.*
+!.env.example
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Raw arXiv PDF corpus - 200MB+, regeneratable via the ingestion notebooks, and not something to
+# redistribute wholesale on a public repo regardless of size.
+arxiv_papers/
+
+# Ingestion artifacts. chunks.jsonl / documents.jsonl are deliberately NOT ignored — they are
+# small, they are what every downstream phase reads, and committing them makes a run
+# reproducible without re-parsing PDFs or re-paying for captions. bm25_indices.json/
+# bm25_values.json are the sparse-vector equivalent of embeddings.npy below (a derived index,
+# not source data) and get the same treatment.
+data/phase1/images/
+data/phase1/embeddings.npy
+data/phase1/embedding_ids.json
+data/phase1/bm25_indices.json
+data/phase1/bm25_values.json
+data/qdrant/
+
+# Phase 5: LangGraph checkpoint store - local, derived, and can carry arbitrary run history
+# (full question/answer text per thread_id), same treatment as data/qdrant/ above. The glob
+# also catches SQLite's -shm/-wal sidecar files, which the bare filename above missed.
+data/langgraph_checkpoints.sqlite*
