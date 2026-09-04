@@ -71,7 +71,7 @@ aware tradeoffs made from measured numbers instead of guesses.
 ## Project status
 
 Phases 0–9 of a 12-phase build are implemented and verified end-to-end against the live index —
-see `ROADMAP.md` for the complete phase plan.
+see `planning/ROADMAP.md` for the complete phase plan.
 
 | Phase | What | Status |
 |---|---|---|
@@ -138,7 +138,7 @@ via Cohen's kappa:
 sensitive, and specificity checks — including correctly *not* triggering on benign-but-risky-
 sounding research questions (prompt-injection research, fraud-detection research). Full defense
 reasoning, including why one rail deliberately fails closed while every other node in the system
-fails open, is in `PHASE7_NOTES.md`.
+fails open, is in `planning/PHASE7_NOTES.md`.
 
 ---
 
@@ -181,8 +181,8 @@ rag/            # every pipeline component - retrieval, generation, guardrails, 
 notebooks/      # phase-by-phase exploration notebooks, executed against the live index
 results/        # committed eval CSVs/JSON - the artifact of record, not just trace links
 config/         # pricing.yaml - every $/token figure sourced and dated
-PHASE*_NOTES.md # one file per phase: what was decided, what was measured, what's still open
-ROADMAP.md      # the full spec, stack decisions, ablation table, defense Q&A prep
+planning/       # ROADMAP.md - the full spec, stack decisions, ablation table, defense Q&A prep
+                # PHASE*_NOTES.md - one per phase: what was decided, measured, and still open
 ```
 
 ---
