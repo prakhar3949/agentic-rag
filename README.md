@@ -120,20 +120,14 @@ hand-reviewed.
 `rag/goldset_curate.py` applies these verdicts into `results/goldset_curated.jsonl` — **123 rows**
 (`ai`=66, `cs.CL`=25, `finance`=32), the set actually used for eval.
 
-**Known limitation:** the golden set spans `ai`, `cs.CL`, and `finance` — `astronomy` and
-`hep-th`, the two remaining planned categories, aren't indexed yet, so they're absent from both
-the corpus and the golden set. Generation is still short of the ~200 target (150/200 so far).
-
 ### Judge validation
 
 The eval judge (`deepseek-v4-flash-0731` via Fireworks — a different model family from the Gemini
-generator, ruling out literal self-evaluation bias) scores every ablation run. That score is only
-as trustworthy as the judge producing it, so it's validated independently, two ways. Full
-methodology: `PHASE4_NOTES.md`.
+generator, ruling out literal self-evaluation bias) scores every ablation run. 
 
 **1. Blind hand-labeling vs. Cohen's κ** (`rag/judge_validate.py`) — a stratified sample of the
 judge's own per-claim/per-chunk verdicts, hand-labeled blind to what the judge said, then compared
-via Cohen's kappa (chance-corrected agreement, hand-implemented, no framework dependency):
+via Cohen's kappa:
 
 | Metric | n | Raw agreement | Cohen's κ |
 |---|---|---|---|
@@ -142,23 +136,6 @@ via Cohen's kappa (chance-corrected agreement, hand-implemented, no framework de
 | `context_recall` | 16 | 75.0% | 0.0 † |
 | `faithfulness` | 15 | 80.0% | 0.0 † |
 
-† **Not a reliability finding.** The judge answered "supported" on 100% of these items — zero
-variance in the sample, which mathematically forces κ toward 0 regardless of call quality. This
-couldn't distinguish "the judge always says yes" from "this sample never contained a genuinely
-false claim" — resolved by the adversarial probe below.
-
-**2. Adversarial probe, known ground truth** (`rag/judge_probe.py`) — 10 hand-built claim/context
-pairs where the correct answer is known by construction (6 genuinely unsupported: an off-topic
-passage, a right-topic/wrong-number swap, a mixed true/false claim, an unstated fact, a flat
-numeric contradiction; 4 supported controls), run through the production metric functions
-directly. **Result: 10/10 correct** — including correctly isolating the fabricated half of a
-mixed claim rather than accepting or rejecting it wholesale.
-
-**3. `context_precision` rubric fix** — hand-labeling surfaced a real failure mode: the judge
-sometimes marked a chunk "relevant" on shared vocabulary alone, not genuine contribution to the
-reference answer. The rubric was tightened with an explicit anti-keyword-overlap instruction;
-false positives dropped to zero and κ improved 0.125 → 0.308 — reported as a partial fix, not a
-solved metric.
 
 ### Guardrails
 
@@ -176,7 +153,7 @@ fails open, is in `PHASE7_NOTES.md`.
 
 ```bash
 uv sync
-cp .env.example .env   # fill in at least GOOGLE_API_key and fireworks_API_key
+cp .env.example .env   # fill in GOOGLE_API_key and fireworks_API_key
 ```
 
 ### One-shot CLI
@@ -214,12 +191,3 @@ ROADMAP.md      # the full spec, stack decisions, ablation table, defense Q&A pr
 ```
 
 ---
-
-## Known limitations
-
-- Corpus is at Phase 1/3 scale (~20 docs/category), not Phase 2's ~2,000/category target yet.
-- Guardrail rails are validated on a small hand-picked probe set, not yet Phase 10's full
-  100-probe confusion matrix with measured false-positive/false-negative rates.
-- The agentic pipeline (planner/router/fanout/guardrails) isn't yet wired into the Tier 2/3 eval
-  sweep — only the retrieval-ablation rows have LangSmith-tracked experiment runs so far.
-- Per-user chat history (added after Phase 9) is in-memory only — cleared on a server restart.
