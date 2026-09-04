@@ -4,11 +4,6 @@ A production-shaped agentic RAG system over a multimodal arXiv corpus: ensemble 
 parallel-fanout LangGraph agent behind four hand-written guardrail rails, a from-scratch
 LLM-judge evaluation harness, full LangSmith observability, and a FastAPI + Streamlit demo.
 
-The deliverable here isn't just a working system — it's a system whose every non-obvious design
-decision is written down with the alternative that was rejected and why. See `ROADMAP.md` for the
-full spec, stack decisions, and ablation plan, and one `PHASE*_NOTES.md` per phase for what was
-decided, what was measured, and what's still open.
-
 ---
 
 ## How it works
